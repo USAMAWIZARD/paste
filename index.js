@@ -5,6 +5,7 @@ app.use(express.static(__dirname));
 const bodyParser= require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}))
 userdata={}
+
 function getformated(querytoformat){
     var formatedresponce="";
     querytoformat.forEach(element => {
@@ -13,25 +14,23 @@ function getformated(querytoformat){
     return formatedresponce
 }
 
-app.get('/:username/:pastestring',(req,res)=>{
-    username=req.param("username")
-    pastestring=req.param("pastestring")
-    if(Object.keys(userdata).includes(username)) 
-    {   userdata[username].push(pastestring)
-        formatedresponce=getformated(userdata[username])
-        console.log(formatedresponce)
-        res.send(formatedresponce).end()
-    }
-    else{
-    userdata[username]=[pastestring]
-    res.send(userdata[username])
-    }
+
+app.post("/:username/update",(req,res)=>{
+userdata[req.param("username")].push(req.body.topaste) 
+res.redirect('/'+req.param("username"))
+})
+app.get("/:username/new",(req,res)=>{
+    userdata[req.param("username")]=[]
+    res.send("new user created "+req.param("username"))
 })
 
 app.get('/:username',(req,res)=>{
     username=req.param("username")
-    if(Object.keys(userdata).includes(username)){
-        res.send(userdata[username]).ends()
+    if(!Object.keys(userdata).includes(username)){
+        res.send("no user exist with this name")
     }
-    res.send("user name not found")
+    else{
+    userData=userdata[username]
+    res.render("pasteit.ejs",{"data":userData,"username":username})
+    }
 })
