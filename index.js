@@ -17,6 +17,14 @@ if (req.body.topaste != "" )
     userdata[req.param("username")].push(JSON.stringify(req.files));
   res.redirect("/" + req.param("username"));
 });
+app.get("/:username/delete", (req, res) => {
+  if(userdata[req.param("username")]!=undefined){
+  delete userdata[req.param("username")]
+  res.send("username "+req.param("username")+" deleted sucessfully")
+  }
+  else
+    res.send("no user exist with username "+req.param("username"))
+});
 app.get("/:username/new", (req, res) => {
   userdata[req.param("username")] = [];
   res.send("new user created " + req.param("username"));
