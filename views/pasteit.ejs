@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form action="" method="POST" id="formid">
-    <input type="text"  name="topaste">
-    <input type="submit">
-</form>
-<script>
-var user= "<%=username%>"
-document.getElementById("formid").action= user +"/update"
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js"></script>
 
-<% Object.values(data).forEach(function(value){ %>
-<%=value%><br>
-<% })%>
+  </head>
+  <body>
+    <form action="" method="POST" id="formid" encType="multipart/form-data">
+      <input type="text" name="topaste" />
+      <input type="file" name="upfile" id="choosefiles" />
+      <input type="submit" />
+    </form>
+    <script>
+      var user = '<%=username%>';
+      document.getElementById("formid").action = user + "/update";
+    </script>
+    <div class="data">
+      <% Object.values(data).forEach(function(value){ %> <% if(value[0]=="{")
+      {%>
 
-</body>
+      <div
+        style="max-height: 80px; max-width: 60%; overflow: scroll"
+        class="filedata"
+      >
+        <canvas width="512px" height="512px"></canvas>
+        <script>
+          var a = '<%- value %>';
+          a = JSON.parse(a);
+          console.log(a);
+          buffer = new ArrayBuffer(a.upfile.size + 1);
+          vie = new Int32Array(a.upfile.data.data);
+          var enc = new TextDecoder("iso-8859-6");
+          console.log();
+          document.getElementsByClassName("data")[0].lastElementChild.innerHTML= enc.decode(vie);
+          //  document.getElementById("filedata").innerHTML=enc.decode(vie)
+        </script>
+  </div>
+        <%} else {%> <%=value %> <% } %> <% })%>
+    
+    </div>
+  </body>
 </html>
