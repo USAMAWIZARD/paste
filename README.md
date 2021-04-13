@@ -51,5 +51,5 @@ there are two ways of adding data
 
 ## License
 
-@usama.wizard
+MIT © USAMA.WIZARD
 
