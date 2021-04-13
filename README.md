@@ -1,5 +1,5 @@
 # paste and get data anywhere
-**You can paste your data such as text,links,images and files and get it where ever you want. **
+**You can paste your data such as text,links,images and files and get it where ever you want.**
 
 
 ## Motivation
