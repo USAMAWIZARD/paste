@@ -47,3 +47,9 @@ there are two ways of adding data
   OR you can visit paste.usama.codes/YOUR_USER_NAME
   add data with GUI
  </ul>
+
+
+## License
+
+@usama.wizard
+
