@@ -47,6 +47,12 @@ there are two ways of adding data
   OR you can visit paste.usama.codes/YOUR_USER_NAME
   add data with GUI
  </ul>
+ 
+**to access your data **
+paste.usama.codes/YOUR_USER_NAME
+
+all of your data will be displyed
+
 **to delete your username**
 you can simply delete your username by navigating to  paste.usama.codes/delete
 
