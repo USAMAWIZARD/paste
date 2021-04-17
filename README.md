@@ -21,8 +21,6 @@ feature of adding files and images pending.
   <li>Express JS</li>
 </ul>
 
-## Screen Shot
-![image](https://user-images.githubusercontent.com/47350008/115103222-115ea400-9f05-11eb-83b6-5ce64617551f.png)
 
 ## Features
 you can access your data on your finger tip by just passing your user name.
